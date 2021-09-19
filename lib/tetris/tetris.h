@@ -9,37 +9,7 @@ using std::array;
 
 
 
-struct Point{
-    int8_t x, y;
 
-Point& operator+=(const Point& other){
-    this->x += other.x;
-    this->y += other.y;
-    return *this;
-}
-
-Point& operator-=(const Point& other){
-    this->x -= other.x;
-    this->y -= other.y;
-    return *this;
-}
-
-
-Point operator+(const Point& other) const{
-    Point answer;
-    answer.x = this->x + other.x;
-    answer.y = this->y + other.y;
-    return answer;
-}
-
-Point operator-(const Point& other) const{
-    Point answer;
-    answer.x = this->x - other.x;
-    answer.y = this->y - other.y;
-    return answer;
-}
-
-};
 
 
 class Tetris{
