@@ -53,7 +53,9 @@ public:
     void    begin(),
             move_left(),
             move_right(),
-            move_down();
+            move_down(),
+            rotate_left(),
+            rotate_right();
 
 private:
     void    check_rows(),
