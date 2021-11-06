@@ -4,20 +4,17 @@
 #include <array>
 #include <random>
 #include <algorithm>
+#include "point2d.h"
 
 using std::array;
-
-
-
-
 
 
 class Tetris{
     constexpr static int8_t width = 10;
     constexpr static int8_t height = 20;
 
-    Point tetromino_origin;
-    array<Point, 4> tetromino_positions; 
+    Point2D tetromino_origin;
+    array<Point2D, 4> tetromino_positions; 
 
 public:
     void    begin(),
@@ -34,10 +31,10 @@ private:
             increase_score(const int8_t& full_rows);
             
 
-    array<Point, 4> get_new_tetromino_positions (const Point& delta, const int8_t& rotation) const;
-    bool  move_tetromino_if_fits (const Point& delta, const int8_t& rotation);
-    bool  does_tetromino_fit     (const array<Point, 4>& points) const;
-    Point get_rotated_position   (const Point& origin, const Point& old_position, const int8_t& rotation) const;
+    array<Point2D, 4> get_new_tetromino_positions (const Point2D& delta, const int8_t& rotation) const;
+    bool  move_tetromino_if_fits (const Point2D& delta, const int8_t& rotation);
+    bool  does_tetromino_fit     (const array<Point2D, 4>& points) const;
+    Point2D get_rotated_position   (const Point2D& origin, const Point2D& old_position, const int8_t& rotation) const;
 
 protected:
     array<array<int8_t, width>, height> playfield;

@@ -15,15 +15,15 @@ void Tetris::begin(){
     spawn_tetromino_if_fits();
 }
 
-void Tetris::rotate_left(){    move_tetromino_if_fits(Point{ 1, 0},  1); }
-void Tetris::rotate_right(){   move_tetromino_if_fits(Point{ 0, 0}, -1); }
+void Tetris::rotate_left(){    move_tetromino_if_fits(Point2D{ 0, 0},  1); }
+void Tetris::rotate_right(){   move_tetromino_if_fits(Point2D{ 0, 0}, -1); }
 
 
-void Tetris::move_left(){      move_tetromino_if_fits(Point{ 1, 0}, 0); }
-void Tetris::move_right(){     move_tetromino_if_fits(Point{-1, 0}, 0); }
+void Tetris::move_left(){      move_tetromino_if_fits(Point2D{ 1, 0}, 0); }
+void Tetris::move_right(){     move_tetromino_if_fits(Point2D{-1, 0}, 0); }
 
 void Tetris::move_down(){
-    if(!move_tetromino_if_fits( Point{0, -1}, 0)){
+    if(!move_tetromino_if_fits( Point2D{0, -1}, 0)){
         check_rows();
         spawn_tetromino_if_fits();
     }
@@ -40,12 +40,12 @@ void Tetris::set_tetromino(const int8_t& value){
 }
 
 
-bool Tetris::move_tetromino_if_fits(const Point& delta, const int8_t& rotation){
+bool Tetris::move_tetromino_if_fits(const Point2D& delta, const int8_t& rotation){
     // Remove tetromino from playfield to not interfere with does_tetromino_fit and save color to later revert this action with the same color
     const auto color = playfield[tetromino_positions.front().y][tetromino_positions.front().x];
     set_tetromino(0);
 
-    const array<Point, 4> positions = get_new_tetromino_positions(delta, rotation);
+    const array<Point2D, 4> positions = get_new_tetromino_positions(delta, rotation);
     const bool can_position_change = does_tetromino_fit(positions);
 
     if(can_position_change){
@@ -57,9 +57,9 @@ bool Tetris::move_tetromino_if_fits(const Point& delta, const int8_t& rotation){
 }
 
 
-array<Point, 4> Tetris::get_new_tetromino_positions(const Point& delta, const int8_t& rotation) const{
-    array<Point, 4> new_positions = tetromino_positions;
-    const Point origin = tetromino_origin + delta;
+array<Point2D, 4> Tetris::get_new_tetromino_positions(const Point2D& delta, const int8_t& rotation) const{
+    array<Point2D, 4> new_positions = tetromino_positions;
+    const Point2D origin = tetromino_origin + delta;
     for(auto& point: new_positions){ 
         point = get_rotated_position(origin, point + delta, rotation);
     }
@@ -67,8 +67,8 @@ array<Point, 4> Tetris::get_new_tetromino_positions(const Point& delta, const in
 }
 
 
-bool Tetris::does_tetromino_fit(const array<Point, 4>& positions) const{
-    const auto is_space_free = [&](const Point& pos ){
+bool Tetris::does_tetromino_fit(const array<Point2D, 4>& positions) const{
+    const auto is_space_free = [&](const Point2D& pos ){
                                             return  pos.x >= 0    && 
                                                     pos.x < width && 
                                                     pos.y >= 0    && 
@@ -94,13 +94,13 @@ void Tetris::check_rows(){
 
 
 void Tetris::spawn_tetromino_if_fits(){
-    constexpr const Point origin{(width / 2) - 2, height - 5};
+    constexpr const Point2D origin{(width / 2) - 2, height - 5};
     const auto& tetromino_template = tetromino_shapes[random(7)];
 
     int8_t found = 0;
-    array<Point, 4> positions;
+    array<Point2D, 4> positions;
 
-    for(Point p{0,0}; p.y < tetromino_template.size();         ++p.y){
+    for(Point2D p{0,0}; p.y < tetromino_template.size();         ++p.y){
         for(p.x = 0 ; p.x < tetromino_template.front().size(); ++p.x){
             if(tetromino_template[p.y+1][p.x] != 0){
                 positions[found] = origin + p;
@@ -129,9 +129,9 @@ void Tetris::increase_score(const int8_t & full_rows){
 }
 
 
-Point Tetris::get_rotated_position(const Point& origin, const Point& position, const int8_t& rotation) const{
+Point2D Tetris::get_rotated_position(const Point2D& origin, const Point2D& position, const int8_t& rotation) const{
     uint8_t pi;
-    Point p = position - origin;
+    Point2D p = position - origin;
 
     switch(rotation % 4){
         case 0: pi = p.y * 4 + p.x;        break;

@@ -1,28 +1,28 @@
-#include "point.h"
+#include "point2d.h"
 
 
-Point& Point::operator+=(const Point& other){
+Point2D& Point2D::operator+=(const Point2D& other){
     this->x += other.x;
     this->y += other.y;
     return *this;
 }
 
-Point& Point::operator-=(const Point& other){
+Point2D& Point2D::operator-=(const Point2D& other){
     this->x -= other.x;
     this->y -= other.y;
     return *this;
 }
 
 
-Point Point::operator+(const Point& other) const{
-    Point answer;
+Point2D Point2D::operator+(const Point2D& other) const{
+    Point2D answer;
     answer.x = this->x + other.x;
     answer.y = this->y + other.y;
     return answer;
 }
 
-Point Point::operator-(const Point& other) const{
-    Point answer;
+Point2D Point2D::operator-(const Point2D& other) const{
+    Point2D answer;
     answer.x = this->x - other.x;
     answer.y = this->y - other.y;
     return answer;
