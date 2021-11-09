@@ -1,13 +1,15 @@
 #pragma once
 
-#include <TFT_eSPI.h>
+// #include <TFT_eSPI.h>
+#include <Adafruit_GFX.h>    
+#include <Adafruit_ST7735.h>
 #include "tetris.h"
 
 
 class TTGO_tetris: protected Tetris{
 private:
     uint8_t button_left, button_middle, button_right;
-    TFT_eSPI* display;
+    Adafruit_ST7735* display;
 
     // void draw_tetromino(){
     //     // const auto positions = get_tetromino_positions();
@@ -26,7 +28,7 @@ private:
     void check_gyroscope();
 
 public:
-    void setup_display(TFT_eSPI* target);
+    void setup_display(Adafruit_ST7735* target);
     void setup_buttons(const uint8_t& b_left, const uint8_t& b_middle, const uint8_t& b_right);
     void run();
 };

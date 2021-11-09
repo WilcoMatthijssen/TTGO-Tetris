@@ -6,11 +6,11 @@ void TTGO_tetris::draw_board(){
     for(int i = 0; i < 20; ++i){
         for(int j = 0; j < 10; ++j){
             if(playfield[i][j] != 0){
-                display->fillRect(j * 8, i * 8, 8, 8, TFT_BLUE);
+                display->fillRect(j * 8, i * 8, 8, 8, ST7735_BLUE);
             }else{
-                display->fillRect(j * 8, i * 8, 8, 8, TFT_BLACK);
+                display->fillRect(j * 8, i * 8, 8, 8, ST7735_BLACK);
             }
-            display->drawRect(j*8,i*8, 8, 8, TFT_GREEN);
+            display->drawRect(j*8,i*8, 8, 8, ST7735_GREEN);
         }
     }
     display->setRotation(0);
@@ -18,8 +18,8 @@ void TTGO_tetris::draw_board(){
 
 
 void TTGO_tetris::draw_score(){
-    display->setTextColor(TFT_WHITE,TFT_BLACK);  display->setTextSize(1);
-    display->setCursor(0, 0, 2);
+    display->setTextColor(ST7735_WHITE,ST7735_BLACK);  display->setTextSize(1);
+    display->setCursor(0, 2);
     display->println("score:");
     display->println(score);
 
@@ -59,7 +59,7 @@ void TTGO_tetris::check_gyroscope(){
 
 
 
-void TTGO_tetris::setup_display(TFT_eSPI* target){
+void TTGO_tetris::setup_display(Adafruit_ST7735* target){
     display = target;
 }
 
