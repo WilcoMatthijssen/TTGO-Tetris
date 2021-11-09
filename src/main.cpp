@@ -1,20 +1,10 @@
 #include "Arduino.h"
 
 #include "ttgo_tetris.h"
-// #include <TFT_eSPI.h>
 #include <Adafruit_I2CDevice.h>
 #include <Adafruit_GFX.h>    
 #include <Adafruit_ST7735.h>
 #include <SPI.h>
-
-#include <Fonts/FreeSerif18pt7b.h>  // Add a custom font
-
-
-
-
-
-int Variable1;  // Create a variable to have something dynamic to show on the display
-// #include <User_Setup.h>
 
 
 // #define TAB_COLOUR ST7735_GREENTAB
