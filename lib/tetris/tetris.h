@@ -17,21 +17,22 @@ class Tetris{
     array<Point2D, 4> tetromino_positions; 
 
 public:
-    void    begin(),
-            move_left(),
-            move_right(),
-            move_down(),
-            rotate_left(),
-            rotate_right();
+    void    begin(),                        
+            move_left(),                   
+            move_right(),                   
+            move_down(),                    
+            rotate_counter_clockwise(),    
+            rotate_clockwise();             
 
 private:
-    void    check_rows(),
-            spawn_tetromino_if_fits(),
+
+    void    handle_full_rows(),
+            spawn_tetromino_if_fits(),      
             set_tetromino(const int8_t& value),
             increase_score(const int8_t& full_rows);
             
 
-    array<Point2D, 4> get_new_tetromino_positions (const Point2D& delta, const int8_t& rotation) const;
+    array<Point2D, 4> get_updated_tetromino_positions (const Point2D& delta, const int8_t& rotation) const;
     bool  move_tetromino_if_fits (const Point2D& delta, const int8_t& rotation);
     bool  does_tetromino_fit     (const array<Point2D, 4>& points) const;
     Point2D get_rotated_position   (const Point2D& origin, const Point2D& old_position, const int8_t& rotation) const;
