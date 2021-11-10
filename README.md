@@ -3,7 +3,7 @@ Tetris implemented on the TTGO-T10 1.8"
 
 [![Build](https://github.com/WilcoMatthijssen/TTGO-Tetris/actions/workflows/platformio_run.yml/badge.svg)](https://github.com/WilcoMatthijssen/TTGO-Tetris/actions/workflows/platformio_run.yml)
 
-![low quality image of project](image/low_quality_image_of_project.jpg)
+![low quality image of project](image/low_quality_image_of_project.jpg)  
 *Bad quality image of what the project looks like being used*
 
 ---
