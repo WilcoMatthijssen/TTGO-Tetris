@@ -1,8 +1,3 @@
-#include <Arduino.h>
-#include <array>
-#include <random>
-#include <algorithm>
-
 #include "tetris.h"
 
 /* --------------------------------------------------
