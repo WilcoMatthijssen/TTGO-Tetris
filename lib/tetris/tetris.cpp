@@ -174,7 +174,3 @@ Point2D Tetris::get_rotated_position(const Point2D& origin, const Point2D& posit
 
     return p + origin;
 }
-
-
-
-

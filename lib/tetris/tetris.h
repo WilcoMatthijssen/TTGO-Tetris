@@ -37,7 +37,7 @@ private:
     bool  does_tetromino_fit     (const array<Point2D, 4>& points) const;
     Point2D get_rotated_position   (const Point2D& origin, const Point2D& old_position, const int8_t& rotation) const;
 
-protected:
+public:
     array<array<int8_t, width>, height> playfield;
     bool gameover;
     size_t score;

@@ -6,10 +6,11 @@
 #include "tetris.h"
 
 
-class TTGO_tetris: protected Tetris{
+class TTGO_tetris{
 private:
     uint8_t button_left, button_middle, button_right;
     Adafruit_ST7735* display;
+    Tetris game;
 
     // void draw_tetromino(){
     //     // const auto positions = get_tetromino_positions();
